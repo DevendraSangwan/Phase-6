@@ -1,0 +1,22 @@
+{
+  "name": "phase-6",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+  "feedback": "node backend/feedbackServer.js",
+  "contact": "node backend/contactServer.js",
+  "progress": "node backend/progressServer.js",
+  "notes": "node backend/notesServer.js"
+},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "gitignore": "^0.7.0",
+    "mongoose": "^9.2.1",
+    "npm": "^11.9.0"
+  }
+}

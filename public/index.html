@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Feedback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Submit Feedback</h2>
+
+  <form id="feedbackForm">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+
+    <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required><br><br>
+
+    <textarea id="comment" placeholder="Your Comment" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
