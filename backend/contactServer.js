@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Contact DB Connected"))
   .catch(err => console.error("MongoDB Error:", err));
 
+  // POST...
 app.post("http://localhost:4001/api/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -27,6 +28,7 @@ app.post("http://localhost:4001/api/contact", async (req, res) => {
   }
 });
 
+//GET
 app.get("http://localhost:4001/api/contact", async (req, res) => {
   try {
     const contacts = await Contact.find();
@@ -36,6 +38,7 @@ app.get("http://localhost:4001/api/contact", async (req, res) => {
   }
 });
 
+//DELETE
 app.delete("http://localhost:4001/api/contact", async (req, res) => {
   try {
     await Contact.deleteMany({});
@@ -45,6 +48,7 @@ app.delete("http://localhost:4001/api/contact", async (req, res) => {
   }
 });
 
+//PUT
 app.put("http://localhost:4001/api/contact/:id", async (req, res) => {
   try {
     const { name, email, message } = req.body;

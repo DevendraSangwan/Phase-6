@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Notes DB Connected"))
   .catch(err => console.error("MongoDB Error:", err));
 
+  //CREATE
 app.post("/api/notes", async (req, res) => {
   try {
     const { title, content, createAt } = req.body;
@@ -27,6 +28,7 @@ app.post("/api/notes", async (req, res) => {
   }
 });
 
+//READ
 app.get("/api/notes", async (req, res) => {
   try {
     const notesData = await Notes.find();
@@ -36,6 +38,7 @@ app.get("/api/notes", async (req, res) => {
   }
 });
 
+//DELETE
 app.delete("/api/notes", async (req, res) => {
   try {
     await Notes.deleteMany({});
@@ -45,6 +48,7 @@ app.delete("/api/notes", async (req, res) => {
   }
 });
 
+//PUT
 app.put("/api/notes/:id", async (req, res) => {
   try {
     const { title, content, createAt } = req.body;

@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("Progress DB Connected"))
   .catch(err => console.error("MongoDB Error:", err));
 
+  //CREATE
 app.post("/api/progress", async (req, res) => {
   try {
     const { studentName, courseName, completionPercentage } = req.body;
@@ -27,6 +28,7 @@ app.post("/api/progress", async (req, res) => {
   }
 });
 
+//READ
 app.get("/api/progress", async (req, res) => {
   try {
     const progressData = await Progress.find();
@@ -36,6 +38,7 @@ app.get("/api/progress", async (req, res) => {
   }
 });
 
+//DELETE ALL
 app.delete("/api/progress", async (req, res) => {
   try {
     await Progress.deleteMany({});
@@ -45,6 +48,7 @@ app.delete("/api/progress", async (req, res) => {
   }
 });
 
+//PUT
 app.put("/api/progress/:id", async (req, res) => {
   try {
     const { studentName, courseName, completionPercentage } = req.body;
