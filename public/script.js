@@ -9,17 +9,18 @@ form.addEventListener("submit", async (e) => {
     comment: document.getElementById("comment").value
   };
 
-  const res = await fetch("http://localhost:4000/api/feedback", {
+  const res = await fetch("/api/feedback", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(feedback)
   });
 
-  const data = await res.json();
-
   const messageEl = document.getElementById("message");
-  messageEl.innerText = data.message;
+  const data = await res.json();
+  messageEl.innerText = res.ok ? "Feedback saved successfully!" : data.error;
   messageEl.classList.add("success");
 
-  form.reset();
+  if (res.ok) {
+    form.reset();
+  }
 });
