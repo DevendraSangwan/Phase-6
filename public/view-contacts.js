@@ -1,5 +1,5 @@
 async function loadContacts() {
-  const res = await fetch("http://localhost:4001/api/contact");
+  const res = await fetch("/api/contact");
   const contacts = await res.json();
 
   const list = document.getElementById("contactList");
@@ -21,7 +21,7 @@ async function loadContacts() {
       const newEmail = prompt("Enter new email:", cn.email);
       const newMessage = prompt("Enter new message:", cn.message);
 
-      await fetch(`http://localhost:4001/api/contact/${cn._id}`, {
+      await fetch(`/api/contact/${cn._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ async function loadContacts() {
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
   if (confirm("Are you sure you want to delete all feedback?")) {
-    await fetch("http://localhost:4001/api/contact", {
+    await fetch("/api/contact", {
       method: "DELETE"
     });
     loadContacts();

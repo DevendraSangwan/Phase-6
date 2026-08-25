@@ -1,5 +1,5 @@
 async function loadProgress() {
-  const res = await fetch("http://localhost:4002/api/progress");
+  const res = await fetch("/api/progress");
   const progress = await res.json();
 
   const list = document.getElementById("progressList");
@@ -21,7 +21,7 @@ async function loadProgress() {
       const newCourse = prompt("Enter new course name:", cn.course);
       const newPercentage = prompt("Enter new progress Percentage:", cn.percentage);
 
-      await fetch(`http://localhost:4002/api/progress/${cn._id}`, {
+      await fetch(`/api/progress/${cn._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ async function loadProgress() {
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
   if (confirm("Are you sure you want to delete all Progress ?")) {
-    await fetch("http://localhost:4002/api/progress", {
+    await fetch("/api/progress", {
       method: "DELETE"
     });
     loadProgress();

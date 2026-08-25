@@ -4,15 +4,21 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const feedbackRoutes = require("./routes/feedbackRoutes");
-
-const app = express();
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/api/feedback", feedbackRoutes);
+function createApp({ routePath, routes, homePage }) {
+  const app = express();
+
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.static(path.join(__dirname, "public")));
+  app.use(routePath, routes);
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", homePage));
+  });
+
+  return app;
+}
 
 async function connectDatabase() {
   if (!mongoUri) {
@@ -23,4 +29,4 @@ async function connectDatabase() {
   console.log("MongoDB connected");
 }
 
-module.exports = { app, connectDatabase };
+module.exports = { createApp, connectDatabase };

@@ -1,6 +1,12 @@
-const { app, connectDatabase } = require("./app");
+const { createApp, connectDatabase } = require("./app");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
-const port = process.env.PORT || 3000;
+const port = 3000;
+const app = createApp({
+  routePath: "/api/feedback",
+  routes: feedbackRoutes,
+  homePage: "index.html"
+});
 
 connectDatabase()
   .then(() => {
@@ -12,8 +18,3 @@ connectDatabase()
     console.error(`Unable to start server: ${error.message}`);
     process.exit(1);
   });
-
-
-
-
-  
