@@ -2,30 +2,47 @@
 
 ## Structure
 
-- `app.js`: Express middleware, static files, database connection, and route mounting
-- `server.js`: application entry point
+- `app.js`: shared Express setup and MongoDB connection
+- `server.js`: feedback server entry point
+- `backend/`: standalone entry points for feedback, contacts, progress, and notes
 - `routes/`: contact, feedback, notes, and progress API routes
-- `controllers/feedbackController.js`: feedback CRUD logic
-- `models/Feedback.js`: Mongoose schema and model
-- `public/`: feedback form and all-feedback page
+- `controllers/`: CRUD logic for each resource
+- `models/`: Mongoose schemas and models
+- `public/`: HTML, CSS, and JavaScript files for each feature
 
-## Start the project
+## Run the project
 
-1. Install dependencies once:
+Install dependencies once:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-2. Create `.env` in the project root and set `MONGODB_URI` and `PORT`.
+Create a `.env` file in the project root with your MongoDB connection string:
 
-3. Start the app:
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>/<database>
+```
 
-   ```bash
-   npm start
-   ```
+Start each server in a separate terminal from the project root:
 
-4. Open `http://localhost:3000/` for the form or `http://localhost:3000/feedback.html` to view feedback.
+```bash
+npm run feedback   # Feedback server: http://localhost:3000
+npm run contact    # Contact server: http://localhost:4000
+npm run progress   # Progress server: http://localhost:5000
+npm run notes      # Notes server: http://localhost:6000
+```
+
+All four servers must be running for every feature to work.
+
+Open these pages in your browser:
+
+- Feedback: `http://localhost:3000/` or `http://localhost:3000/feedback.html`
+- Contacts: `http://localhost:4000/contact.html` or `http://localhost:4000/view-contacts.html`
+- Progress: `http://localhost:5000/progress.html` or `http://localhost:5000/view-progress.html`
+- Notes: `http://localhost:6000/note.html` or `http://localhost:6000/view-notes.html`
+
+`npm start` starts only the feedback server on port `3000`.
 
 The API endpoints are:
 
