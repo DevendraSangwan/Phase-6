@@ -4,7 +4,7 @@ const feedbackSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true //string ke starting or ending ka space htana h ya nhi 
   },
   rating: {
     type: Number,

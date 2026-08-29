@@ -27,7 +27,7 @@ async function loadFeedback() {
         body: JSON.stringify({
           name: newName,
           rating: newRating,
-          comment: newComment
+          comment: newComment 
         })
       });
 
