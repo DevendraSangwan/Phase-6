@@ -1,7 +1,8 @@
 const { createApp, connectDatabase } = require("../app");
+const { seedDatabase } = require("../seed");
 const notesRoutes = require("../routes/notesRoutes");
 
-const port = 7000;
+const port = 8000;
 const app = createApp({
   routePath: "/api/notes",
   routes: notesRoutes,
@@ -9,6 +10,7 @@ const app = createApp({
 });
 
 connectDatabase()
+  .then(() => seedDatabase({ disconnectAfter: false }))
   .then(() => app.listen(port, () => {
     console.log(`Notes server running at http://localhost:${port}`);
   }))

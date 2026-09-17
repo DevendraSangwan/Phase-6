@@ -4,6 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "seed": "node seed.js",
     "feedback": "node backend/feedbackServer.js",
     "contact": "node backend/contactServer.js",
     "progress": "node backend/progressServer.js",
