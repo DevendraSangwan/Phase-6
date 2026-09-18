@@ -1,51 +1,26 @@
-async function loadFeedback() {
-  const res = await fetch("/api/feedback");
-  const feedbacks = await res.json();
+const form = document.getElementById("feedbackForm");
 
-  const list = document.getElementById("feedbackList");
-  list.innerHTML = "";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  feedbacks.forEach(fb => {
-    const li = document.createElement("li");
+  const feedback = {
+    name: document.getElementById("name").value,
+    rating: Number(document.getElementById("rating").value),
+    comment: document.getElementById("comment").value
+  };
 
-    li.innerHTML = `
-      <div class="feedback-name">${fb.name}</div>
-      <div class="feedback-rating">Rating: ${fb.rating}</div>
-      <div class="feedback-comment">${fb.comment}</div>
-      <button class="editBtn">Edit</button>
-    `;
-
-    // EDIT
-    li.querySelector(".editBtn").addEventListener("click", async () => {
-      const newName = prompt("Enter new name:", fb.name);
-      const newRating = prompt("Enter new rating:", fb.rating);
-      const newComment = prompt("Enter new comment:", fb.comment);
-
-      await fetch(`/api/feedback/${fb._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: newName,
-          rating: newRating,
-          comment: newComment 
-        })
-      });
-
-      loadFeedback();
-    });
-
-    list.appendChild(li);
+  const res = await fetch("/api/feedback", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(feedback)
   });
-}
 
-// DELETE ALL
-document.getElementById("deleteAll").addEventListener("click", async () => {
-  if (confirm("Are you sure you want to delete all feedback?")) {
-    await fetch("/api/feedback", {
-      method: "DELETE"
-    });
-    loadFeedback();
+  const messageEl = document.getElementById("message");
+  const data = await res.json();
+  messageEl.innerText = res.ok ? "Feedback saved successfully!" : data.error;
+  messageEl.classList.add("success");
+
+  if (res.ok) {
+    form.reset();
   }
 });
-
-loadFeedback();

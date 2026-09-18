@@ -43,7 +43,8 @@ All four servers must be running for every feature to work.
 
 Open these pages in your browser:
 
-- Feedback: `http://localhost:5000/` or `http://localhost:5000/feedback.html`
+- Feedback form: `http://localhost:5000/` or `http://localhost:5000/feedback.html`
+- View all feedback: `http://localhost:5000/view-feedback.html`
 - Contacts: `http://localhost:6000/contact.html` or `http://localhost:6000/view-contacts.html`
 - Progress: `http://localhost:7000/progress.html` or `http://localhost:7000/view-progress.html`
 - Notes: `http://localhost:8000/note.html` or `http://localhost:8000/view-notes.html`

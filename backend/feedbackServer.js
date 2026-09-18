@@ -6,7 +6,7 @@ const port = 5000;
 const app = createApp({
   routePath: "/api/feedback",
   routes: feedbackRoutes,
-  homePage: "index.html"
+  homePage: "feedback.html"
 });
 
 connectDatabase()

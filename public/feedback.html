@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>All Feedback</title>
+  <title>Student Feedback</title>
   <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
-  <h2>All Student Feedback</h2>
+  <h2>Submit Feedback</h2>
 
-  <ul id="feedbackList"></ul>
+  <form id="feedbackForm">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
 
-  <button id="deleteAll">Delete All Feedback</button>
+    <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required><br><br>
+
+    <textarea id="comment" placeholder="Your Comment" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
 
   <script src="feedback.js"></script>
 </body>
