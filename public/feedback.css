@@ -106,13 +106,20 @@ button:hover {
   color: #444;
 }
 
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
 #deleteAll {
   display: block;
   max-width: 600px;
   width: 100%;
   margin: 1.5rem auto 0;
   padding: 0.7rem 1.5rem;
-  background-color: #007bff;
+  background-color: #dc3545;
   color: white;
   border: none;
   border-radius: 8px;
@@ -124,7 +131,7 @@ button:hover {
 }
 
 #deleteAll:hover {
-  background-color: #0056b3;
+  background-color: #b02a37;
   transform: translateY(-2px);
 }
 
@@ -150,6 +157,27 @@ button:hover {
 }
 
 .editBtn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.deleteBtn {
+  display: block;
+  max-width: 120px;
+  width: 100%;
+  padding: 0.7rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.deleteBtn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }

@@ -12,7 +12,10 @@ async function loadFeedback() {
       <div class="feedback-name">${fb.name}</div>
       <div class="feedback-rating">Rating: ${fb.rating}</div>
       <div class="feedback-comment">${fb.comment}</div>
-      <button class="editBtn">Edit</button>
+      <div class="action-row">
+        <button class="editBtn" type="button">Edit</button>
+        <button class="deleteBtn" type="button">Delete</button>
+      </div>
     `;
 
     // EDIT
@@ -32,6 +35,13 @@ async function loadFeedback() {
       });
 
       loadFeedback();
+    });
+
+    li.querySelector(".deleteBtn").addEventListener("click", async () => {
+      if (confirm("Are you sure you want to delete this feedback?")) {
+        await fetch(`/api/feedback/${fb._id}`, { method: "DELETE" });
+        loadFeedback();
+      }
     });
 
     list.appendChild(li);

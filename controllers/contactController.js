@@ -35,6 +35,20 @@ async function updateContact(req, res) {
   }
 }
 
+async function deleteContact(req, res) {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid contact id" });
+  }
+
+  try {
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+    if (!contact) return res.status(404).json({ error: "Contact not found" });
+    res.json({ message: "Contact deleted successfully", contact });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete contact" });
+  }
+}
+
 async function deleteContacts(req, res) {
   try {
     await Contact.deleteMany({});
@@ -44,4 +58,4 @@ async function deleteContacts(req, res) {
   }
 }
 
-module.exports = { createContact, getContacts, updateContact, deleteContacts };
+module.exports = { createContact, getContacts, updateContact, deleteContact, deleteContacts };

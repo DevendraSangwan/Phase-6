@@ -50,6 +50,23 @@ async function updateFeedback(req, res) {
   }
 }
 
+async function deleteFeedback(req, res) {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid feedback id" });
+  }
+
+  try {
+    const feedback = await Feedback.findByIdAndDelete(req.params.id);
+    if (!feedback) {
+      return res.status(404).json({ error: "Feedback not found" });
+    }
+
+    res.json({ message: "Feedback deleted successfully", feedback });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete feedback" });
+  }
+}
+
 async function deleteAllFeedback(req, res) {
   try {
     await Feedback.deleteMany({});
@@ -63,5 +80,6 @@ module.exports = {
   createFeedback,
   getFeedback,
   updateFeedback,
+  deleteFeedback,
   deleteAllFeedback
 };

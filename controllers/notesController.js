@@ -35,6 +35,20 @@ async function updateNote(req, res) {
   }
 }
 
+async function deleteNote(req, res) {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid note id" });
+  }
+
+  try {
+    const note = await Notes.findByIdAndDelete(req.params.id);
+    if (!note) return res.status(404).json({ error: "Note not found" });
+    res.json({ message: "Note deleted successfully", note });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete note" });
+  }
+}
+
 async function deleteNotes(req, res) {
   try {
     await Notes.deleteMany({});
@@ -44,4 +58,4 @@ async function deleteNotes(req, res) {
   }
 }
 
-module.exports = { createNote, getNotes, updateNote, deleteNotes };
+module.exports = { createNote, getNotes, updateNote, deleteNote, deleteNotes };

@@ -3,6 +3,7 @@ const {
   createFeedback,
   getFeedback,
   updateFeedback,
+  deleteFeedback,
   deleteAllFeedback
 } = require("../controllers/feedbackController");
 
@@ -14,5 +15,6 @@ router.route("/")
   .delete(deleteAllFeedback);
 
 router.put("/:id", updateFeedback);
+router.delete("/:id", deleteFeedback);
 
 module.exports = router;

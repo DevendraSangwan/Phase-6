@@ -36,6 +36,20 @@ async function updateProgress(req, res) {
   }
 }
 
+async function deleteProgressItem(req, res) {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid progress id" });
+  }
+
+  try {
+    const progress = await Progress.findByIdAndDelete(req.params.id);
+    if (!progress) return res.status(404).json({ error: "Progress not found" });
+    res.json({ message: "Progress deleted successfully", progress });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete progress" });
+  }
+}
+
 async function deleteProgress(req, res) {
   try {
     await Progress.deleteMany({});
@@ -45,4 +59,4 @@ async function deleteProgress(req, res) {
   }
 }
 
-module.exports = { createProgress, getProgress, updateProgress, deleteProgress };
+module.exports = { createProgress, getProgress, updateProgress, deleteProgressItem, deleteProgress };

@@ -10,7 +10,10 @@ async function loadNotes(){
          li.innerHTML = `
       <div class="Notes-title">Title:  ${cn.title}</div>
       <div class="Notes-content">Content:  ${cn.content}</div>
-      <button class="editBtn">Edit</button>
+      <div class="action-row">
+        <button class="editBtn" type="button">Edit</button>
+        <button class="deleteBtn" type="button">Delete</button>
+      </div>
     `;
     
     // EDIT
@@ -28,6 +31,13 @@ async function loadNotes(){
       });
 
       loadNotes();
+    });
+
+    li.querySelector(".deleteBtn").addEventListener("click", async () => {
+      if (confirm("Are you sure you want to delete this note?")) {
+        await fetch(`/api/notes/${cn._id}`, { method: "DELETE" });
+        loadNotes();
+      }
     });
 
     list.appendChild(li);

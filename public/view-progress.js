@@ -12,7 +12,10 @@ async function loadProgress() {
       <div class="progress-name">Name: ${cn.studentName}</div>
       <div class="progress-course">Course: ${cn.courseName}</div>
       <div class="progress-percentage">Percentage: ${cn.completionPercentage}%</div>
-      <button class="editBtn">Edit</button>
+      <div class="action-row">
+        <button class="editBtn" type="button">Edit</button>
+        <button class="deleteBtn" type="button">Delete</button>
+      </div>
     `;
 
     // EDIT
@@ -31,6 +34,13 @@ async function loadProgress() {
       });
 
       loadProgress();
+    });
+
+    li.querySelector(".deleteBtn").addEventListener("click", async () => {
+      if (confirm("Are you sure you want to delete this progress entry?")) {
+        await fetch(`/api/progress/${cn._id}`, { method: "DELETE" });
+        loadProgress();
+      }
     });
 
     list.appendChild(li);

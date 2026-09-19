@@ -12,7 +12,10 @@ async function loadContacts() {
       <div class="contact-name">Name: ${cn.name}</div>
       <div class="contact-email">Email: ${cn.email}</div>
       <div class="contact-message">Message: ${cn.message}</div>
-      <button class="editBtn">Edit</button>
+      <div class="action-row">
+        <button class="editBtn" type="button">Edit</button>
+        <button class="deleteBtn" type="button">Delete</button>
+      </div>
     `;
 
     // EDIT
@@ -31,6 +34,13 @@ async function loadContacts() {
       });
 
       loadContacts();
+    });
+
+    li.querySelector(".deleteBtn").addEventListener("click", async () => {
+      if (confirm("Are you sure you want to delete this contact?")) {
+        await fetch(`/api/contact/${cn._id}`, { method: "DELETE" });
+        loadContacts();
+      }
     });
 
     list.appendChild(li);
