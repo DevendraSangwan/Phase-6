@@ -2,7 +2,7 @@ const { createApp, connectDatabase } = require("../app");
 const { seedDatabase } = require("../seed");
 const contactRoutes = require("../routes/contactRoutes");
 
-const port = 6001;
+const port = Number(process.env.CONTACT_PORT || process.env.PORT || 6001);
 const app = createApp({
   routePath: "/api/contact",
   routes: contactRoutes,

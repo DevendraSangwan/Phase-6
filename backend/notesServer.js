@@ -2,7 +2,7 @@ const { createApp, connectDatabase } = require("../app");
 const { seedDatabase } = require("../seed");
 const notesRoutes = require("../routes/notesRoutes");
 
-const port = 8001;
+const port = Number(process.env.NOTES_PORT || process.env.PORT || 8001);
 const app = createApp({
   routePath: "/api/notes",
   routes: notesRoutes,

@@ -2,7 +2,7 @@ const { createApp, connectDatabase } = require("./app");
 const { seedDatabase } = require("./seed");
 const feedbackRoutes = require("./routes/feedbackRoutes");
 
-const port = 5000;
+const port = Number(process.env.FEEDBACK_PORT || process.env.PORT || 5001);
 const app = createApp({
   routePath: "/api/feedback",
   routes: feedbackRoutes,

@@ -8,14 +8,16 @@ const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 function createApp({ routePath, routes, homePage }) {
   const app = express();
+  const publicDir = path.join(__dirname, "public");
+  const pagePath = path.join(publicDir, homePage);
 
   app.use(cors());
   app.use(express.json());
-  app.use(express.static(path.join(__dirname, "public")));
-  app.use(routePath, routes);
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", homePage));
+    res.sendFile(pagePath);
   });
+  app.use(express.static(publicDir));
+  app.use(routePath, routes);
 
   return app;
 }
