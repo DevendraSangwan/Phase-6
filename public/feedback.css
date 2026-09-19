@@ -47,6 +47,13 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.nav-btn {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin: 1rem auto 0;
+  text-align: center;
+}
 #message {
   max-width: 600px;
   margin: 1rem auto 0;

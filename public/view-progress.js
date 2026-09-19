@@ -9,18 +9,17 @@ async function loadProgress() {
     const li = document.createElement("li");
 
     li.innerHTML = `
-      <div class="progress-name">Name:  ${cn.studentName}</div>
-      <div class="progress-course">Course:  ${cn.courseName}</div>
-      <div class="progress-percentage">Percentage:  ${cn.completionPercentage}%</div>
+      <div class="progress-name">Name: ${cn.studentName}</div>
+      <div class="progress-course">Course: ${cn.courseName}</div>
+      <div class="progress-percentage">Percentage: ${cn.completionPercentage}%</div>
       <button class="editBtn">Edit</button>
     `;
 
     // EDIT
     li.querySelector(".editBtn").addEventListener("click", async () => {
-      const newName = prompt("Enter new name:", cn.name);
-      const newCourse = prompt("Enter new course name:", cn.course);
-      const newPercentage = prompt("Enter new progress Percentage:", cn.percentage);
-
+      const newName = prompt("Enter new name:", cn.studentName || "");
+      const newCourse = prompt("Enter new course name:", cn.courseName || "");
+      const newPercentage = prompt("Enter new progress Percentage:", cn.completionPercentage || "");
       await fetch(`/api/progress/${cn._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

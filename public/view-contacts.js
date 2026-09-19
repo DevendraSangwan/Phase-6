@@ -9,18 +9,17 @@ async function loadContacts() {
     const li = document.createElement("li");
 
     li.innerHTML = `
-      <div class="contact-name">Nmae:  ${cn.name}</div>
-      <div class="contact-email">email:  ${cn.email}</div>
-      <div class="contact-message">message:  ${cn.message}</div>
+      <div class="contact-name">Name: ${cn.name}</div>
+      <div class="contact-email">Email: ${cn.email}</div>
+      <div class="contact-message">Message: ${cn.message}</div>
       <button class="editBtn">Edit</button>
     `;
 
     // EDIT
     li.querySelector(".editBtn").addEventListener("click", async () => {
-      const newName = prompt("Enter new name:", cn.name);
-      const newEmail = prompt("Enter new email:", cn.email);
-      const newMessage = prompt("Enter new message:", cn.message);
-
+      const newName = prompt("Enter new name:", cn.name || "");
+      const newEmail = prompt("Enter new email:", cn.email || "");
+      const newMessage = prompt("Enter new message:", cn.message || "");
       await fetch(`/api/contact/${cn._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -40,7 +39,7 @@ async function loadContacts() {
 
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
-  if (confirm("Are you sure you want to delete all feedback?")) {
+  if (confirm("Are you sure you want to delete all contacts?")) {
     await fetch("/api/contact", {
       method: "DELETE"
     });

@@ -2,7 +2,7 @@ const { createApp, connectDatabase } = require("../app");
 const { seedDatabase } = require("../seed");
 const progressRoutes = require("../routes/progressRoutes");
 
-const port = 7000;
+const port = 7001;
 const app = createApp({
   routePath: "/api/progress",
   routes: progressRoutes,
