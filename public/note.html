@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Page</title>
-    <link rel="stylesheet" href="note.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>Notes | Phase-6</title>
+  <link rel="stylesheet" href="note.css">
 </head>
 <body>
-    <h2> Book for Notes</h2>
-    <form id="notesForm">
-    <input type="text" id="title" placeholder="Enter your Title" required><br><br>
+  <main class="workspace">
+    <header class="workspace-header">
+      <a class="back-link" href="index.html">← <span>Back to dashboard</span></a>
+      <p class="eyebrow">Notes</p>
+      <h1>Capture your ideas</h1>
+      <p class="subtitle">Keep important thoughts and project notes close at hand.</p>
+    </header>
 
-    <textarea id="content" placeholder="Your Content" ></textarea><br><br>
-
-    <button type="submit">Submit</button>
-    </form>
-    <button type="button" class="nav-btn" onclick="window.location.href='view-notes.html'">View Saved Notes</button>
-    <p id="result"></p>
-    <script src="note.js"></script>
+    <section class="workspace-card" aria-label="Create a note">
+      <form id="notesForm">
+        <div class="field">
+          <label for="title">Note title</label>
+          <input type="text" id="title" name="title" placeholder="Give your note a title" required>
+        </div>
+        <div class="field">
+          <label for="content">Note content</label>
+          <textarea id="content" name="content" placeholder="Write your note here..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Save note</button>
+          <a class="nav-btn" href="view-notes.html">Browse saved notes</a>
+        </div>
+      </form>
+      <p id="result" role="status" aria-live="polite"></p>
+    </section>
+    <footer class="workspace-footer">Your ideas are saved in the Phase-6 workspace.</footer>
+  </main>
+  <script src="note.js"></script>
 </body>
 </html>

@@ -22,7 +22,10 @@ Create a `.env` file in the project root with your MongoDB connection string:
 
 ```env
 MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>/<database>
+MONGODB_DATABASE=Phase-6
 ```
+
+All app servers and the seed script use the `Phase-6` database by default. `MONGODB_DATABASE` can override the database name; it takes precedence over any database name in `MONGODB_URI`.
 
 Seed sample data once for learning/demo purposes:
 
@@ -30,16 +33,22 @@ Seed sample data once for learning/demo purposes:
 npm run seed
 ```
 
-Start each server in a separate terminal from the project root:
+Start the dashboard and all four projects together:
+
+```bash
+npm start
+```
+
+Open `http://localhost:5001` to see the project dashboard. Use its buttons to open Feedback, Contacts, Progress, or Notes. All projects and their APIs are available from this server, backed by the same `Phase-6` database.
+
+For standalone development, each project can still be started separately in its own terminal:
 
 ```bash
 npm run feedback   # Feedback server: http://localhost:5001
-npm run contact    # Contact server: http://localhost:6000
-npm run progress   # Progress server: http://localhost:7000
-npm run notes      # Notes server: http://localhost:8000
+npm run contact    # Contact server: http://localhost:6001
+npm run progress   # Progress server: http://localhost:7001
+npm run notes      # Notes server: http://localhost:8001
 ```
-
-All four servers must be running for every feature to work.
 
 Open these pages in your browser:
 
@@ -49,7 +58,7 @@ Open these pages in your browser:
 - Progress: `http://localhost:7000/progress.html` or `http://localhost:7000/view-progress.html`
 - Notes: `http://localhost:8000/note.html` or `http://localhost:8000/view-notes.html`
 
-`npm start` starts only the feedback server on port `5001`.
+`npm start` starts the dashboard and all four projects on port `5001`.
 
 The API endpoints are:
 
@@ -103,5 +112,3 @@ Each resource supports `POST`, `GET`, `PUT /:id`, and `DELETE` on its API path.
 - Database connection: `connectDatabase()` in `app.js`
 - Seed data: `seed.js`
 - Root server entry: `server.js`
-
-

@@ -1,12 +1,11 @@
 require("dotenv").config();
 
 const mongoose = require("mongoose");
+const { connectDatabase } = require("./app");
 const Contact = require("./models/Contact");
 const Feedback = require("./models/Feedback");
 const Notes = require("./models/Notes");
 const Progress = require("./models/Progress");
-
-const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 const sampleData = {
   Contact: [
@@ -88,12 +87,8 @@ const sampleData = {
 async function seedDatabase(options = {}) {
   const { disconnectAfter = true, connect = true } = options;
 
-  if (!mongoUri) {
-    throw new Error("MONGODB_URI is missing from .env");
-  }
-
   if (connect && mongoose.connection.readyState === 0) {
-    await mongoose.connect(mongoUri);
+    await connectDatabase();
   }
 
   const seedTasks = [

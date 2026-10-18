@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Progress</title>
-    <link rel="stylesheet" href="progress.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>Student Progress | Phase-6</title>
+  <link rel="stylesheet" href="progress.css">
 </head>
 <body>
-    <h2>Student Progress Form</h2>
-    <form id="progressForm">
-   <input type="text" id="name" placeholder="Student Name" required><br><br>
+  <main class="workspace">
+    <header class="workspace-header">
+      <a class="back-link" href="index.html">← <span>Back to dashboard</span></a>
+      <p class="eyebrow">Student Progress</p>
+      <h1>Track learning progress</h1>
+      <p class="subtitle">Keep course progress up to date for every student.</p>
+    </header>
 
-    <input type="text" id="course" placeholder="Student Course Name" required><br><br>
-    <input type="number" id="percentage" min=0 max=100 placeholder="Student percentage " required><br><br>
-    <button>Submit </button>
-    </form>
-    <button type="button" class="nav-btn" onclick="window.location.href='view-progress.html'">View Saved Progress</button>
-    <p id="result"></p>
-<script src="progress.js"></script>
-    
+    <section class="workspace-card" aria-label="Add student progress">
+      <form id="progressForm">
+        <div class="field">
+          <label for="name">Student name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Areeba Ahmed" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="course">Course name</label>
+          <input type="text" id="course" name="course" placeholder="e.g. Full Stack Development" required>
+        </div>
+        <div class="field">
+          <label for="percentage">Completion percentage</label>
+          <input type="number" id="percentage" name="percentage" min="0" max="100" placeholder="Enter a number from 0 to 100" required>
+        </div>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Save progress</button>
+          <a class="nav-btn" href="view-progress.html">View all progress</a>
+        </div>
+      </form>
+      <p id="result" role="status" aria-live="polite"></p>
+    </section>
+    <footer class="workspace-footer">Celebrate every step forward in the learning journey.</footer>
+  </main>
+  <script src="progress.js"></script>
 </body>
 </html>

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>All Progress</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Progress | Phase-6</title>
   <link rel="stylesheet" href="progress.css">
 </head>
 <body>
-  <h2>All  Progress</h2>
-
-  <ul id="progressList"></ul>
-
-  <button type="button" class="nav-btn" onclick="window.location.href='progress.html'">Add New Progress</button>
-  <button id="deleteAll">Delete All Students Progress</button>
-
+  <main class="workspace">
+    <header class="workspace-header">
+      <a class="back-link" href="index.html">← <span>Back to dashboard</span></a>
+      <p class="eyebrow">Student Progress</p>
+      <h1>Progress overview</h1>
+      <p class="subtitle">See how students are moving through their courses.</p>
+    </header>
+    <nav class="page-actions" aria-label="Progress actions">
+      <a class="nav-btn" href="progress.html">＋ Add progress</a>
+      <button class="danger-button" id="deleteAll" type="button">Delete all progress</button>
+    </nav>
+    <ul id="progressList" aria-live="polite"></ul>
+    <footer class="workspace-footer">Progress records from the Phase-6 workspace.</footer>
+  </main>
   <script src="view-progress.js"></script>
 </body>
 </html>

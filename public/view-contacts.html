@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>All Contact</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved Contacts | Phase-6</title>
   <link rel="stylesheet" href="contact.css">
 </head>
 <body>
-  <h2>All  Contact</h2>
-
-  <ul id="contactList"></ul>
-
-  <button type="button" class="nav-btn" onclick="window.location.href='contact.html'">Add New Contact</button>
-  <button id="deleteAll">Delete All Contact</button>
-
+  <main class="workspace">
+    <header class="workspace-header">
+      <a class="back-link" href="index.html">← <span>Back to dashboard</span></a>
+      <p class="eyebrow">Contact Manager</p>
+      <h1>Saved contacts</h1>
+      <p class="subtitle">Review and manage messages and enquiries.</p>
+    </header>
+    <nav class="page-actions" aria-label="Contact actions">
+      <a class="nav-btn" href="contact.html">＋ Add contact</a>
+      <button class="danger-button" id="deleteAll" type="button">Delete all contacts</button>
+    </nav>
+    <ul id="contactList" aria-live="polite"></ul>
+    <footer class="workspace-footer">Contact records from the Phase-6 workspace.</footer>
+  </main>
   <script src="view-contacts.js"></script>
 </body>
 </html>

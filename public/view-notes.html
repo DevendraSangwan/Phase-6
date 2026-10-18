@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>All Notes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved Notes | Phase-6</title>
   <link rel="stylesheet" href="note.css">
 </head>
 <body>
-  <h2>All  Notes</h2>
-
-  <ul id="notesList"></ul>
-
-  <button type="button" class="nav-btn" onclick="window.location.href='note.html'">Add New Note</button>
-  <button id="deleteAll">Delete All Notes</button>
-
+  <main class="workspace">
+    <header class="workspace-header">
+      <a class="back-link" href="index.html">← <span>Back to dashboard</span></a>
+      <p class="eyebrow">Notes</p>
+      <h1>Your saved notes</h1>
+      <p class="subtitle">Find, edit, and manage the notes you’ve created.</p>
+    </header>
+    <nav class="page-actions" aria-label="Notes actions">
+      <a class="nav-btn" href="note.html">＋ Add a note</a>
+      <button class="danger-button" id="deleteAll" type="button">Delete all notes</button>
+    </nav>
+    <ul id="notesList" aria-live="polite"></ul>
+    <footer class="workspace-footer">Notes from the Phase-6 workspace.</footer>
+  </main>
   <script src="view-notes.js"></script>
 </body>
 </html>
