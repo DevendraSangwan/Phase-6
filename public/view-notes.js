@@ -1,5 +1,5 @@
 async function loadNotes(){
-      const res = await fetch("/api/notes");
+      const res = await fetch(phase6ApiUrl("/api/notes"));
       const notes= await res.json();
 
       const list =document.getElementById("notesList");
@@ -21,7 +21,7 @@ async function loadNotes(){
       const newTitle = prompt("Enter new Title:", cn.title);
       const newContent = prompt("Enter new Content:", cn.content);
 
-      await fetch(`/api/notes/${cn._id}`, {
+      await fetch(phase6ApiUrl(`/api/notes/${cn._id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -35,7 +35,7 @@ async function loadNotes(){
 
     li.querySelector(".deleteBtn").addEventListener("click", async () => {
       if (confirm("Are you sure you want to delete this note?")) {
-        await fetch(`/api/notes/${cn._id}`, { method: "DELETE" });
+        await fetch(phase6ApiUrl(`/api/notes/${cn._id}`), { method: "DELETE" });
         loadNotes();
       }
     });
@@ -50,7 +50,7 @@ async function loadNotes(){
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
   if (confirm("Are you sure you want to delete all Notes?")) {
-    await fetch("/api/notes", {
+    await fetch(phase6ApiUrl("/api/notes"), {
       method: "DELETE"
     });
     loadNotes();

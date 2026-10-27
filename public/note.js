@@ -8,7 +8,7 @@ form.addEventListener("submit",async(e)=>{
     content:document.getElementById("content").value
   };
    
-  const res = await fetch("/api/notes", {
+  const res = await fetch(phase6ApiUrl("/api/notes"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(notes)

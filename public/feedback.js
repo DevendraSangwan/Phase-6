@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
     comment: document.getElementById("comment").value
   };
 
-  const res = await fetch("/api/feedback", {
+  const res = await fetch(phase6ApiUrl("/api/feedback"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(feedback)

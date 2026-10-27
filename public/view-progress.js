@@ -1,5 +1,5 @@
 async function loadProgress() {
-  const res = await fetch("/api/progress");
+  const res = await fetch(phase6ApiUrl("/api/progress"));
   const progress = await res.json();
 
   const list = document.getElementById("progressList");
@@ -23,7 +23,7 @@ async function loadProgress() {
       const newName = prompt("Enter new name:", cn.studentName || "");
       const newCourse = prompt("Enter new course name:", cn.courseName || "");
       const newPercentage = prompt("Enter new progress Percentage:", cn.completionPercentage || "");
-      await fetch(`/api/progress/${cn._id}`, {
+      await fetch(phase6ApiUrl(`/api/progress/${cn._id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,7 +38,7 @@ async function loadProgress() {
 
     li.querySelector(".deleteBtn").addEventListener("click", async () => {
       if (confirm("Are you sure you want to delete this progress entry?")) {
-        await fetch(`/api/progress/${cn._id}`, { method: "DELETE" });
+        await fetch(phase6ApiUrl(`/api/progress/${cn._id}`), { method: "DELETE" });
         loadProgress();
       }
     });
@@ -50,7 +50,7 @@ async function loadProgress() {
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
   if (confirm("Are you sure you want to delete all Progress ?")) {
-    await fetch("/api/progress", {
+    await fetch(phase6ApiUrl("/api/progress"), {
       method: "DELETE"
     });
     loadProgress();

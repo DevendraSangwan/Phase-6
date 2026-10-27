@@ -69,6 +69,14 @@ The API endpoints are:
 
 Each resource supports `POST`, `GET`, `PUT /:id`, and `DELETE` on its API path.
 
+## Deploy frontend and backend separately
+
+The Render Blueprint in `render.yaml` runs the API server. Create the Render web service from this repository and set `MONGODB_URI` to the MongoDB connection string in Render's environment settings. Keep `MONGODB_DATABASE` set to `Phase-6`; do not commit `.env` or put the MongoDB URI in the frontend.
+
+The Netlify configuration in `netlify.toml` publishes the `public/` directory. After Render deploys, open `public/api-config.js` and set `PHASE6_API_BASE_URL` to the Render service URL, for example `https://phase-6-api.onrender.com` (no trailing slash). Commit and push that change, then deploy the site on Netlify from the same repository.
+
+For Atlas, allow connections from the Render service in Network Access. For production, use Render static outbound IPs when available and allowlist those IPs in Atlas; avoid opening database network access to everyone unless you understand and accept the risk.
+
 ## Project Workflow
 
 ### 1) Feedback Project

@@ -1,5 +1,5 @@
 async function loadContacts() {
-  const res = await fetch("/api/contact");
+  const res = await fetch(phase6ApiUrl("/api/contact"));
   const contacts = await res.json();
 
   const list = document.getElementById("contactList");
@@ -23,7 +23,7 @@ async function loadContacts() {
       const newName = prompt("Enter new name:", cn.name || "");
       const newEmail = prompt("Enter new email:", cn.email || "");
       const newMessage = prompt("Enter new message:", cn.message || "");
-      await fetch(`/api/contact/${cn._id}`, {
+      await fetch(phase6ApiUrl(`/api/contact/${cn._id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,7 +38,7 @@ async function loadContacts() {
 
     li.querySelector(".deleteBtn").addEventListener("click", async () => {
       if (confirm("Are you sure you want to delete this contact?")) {
-        await fetch(`/api/contact/${cn._id}`, { method: "DELETE" });
+        await fetch(phase6ApiUrl(`/api/contact/${cn._id}`), { method: "DELETE" });
         loadContacts();
       }
     });
@@ -50,7 +50,7 @@ async function loadContacts() {
 // DELETE ALL
 document.getElementById("deleteAll").addEventListener("click", async () => {
   if (confirm("Are you sure you want to delete all contacts?")) {
-    await fetch("/api/contact", {
+    await fetch(phase6ApiUrl("/api/contact"), {
       method: "DELETE"
     });
     loadContacts();

@@ -9,7 +9,7 @@ const form = document.getElementById("progressForm");
         completionPercentage: document.getElementById("percentage").value
       };
 
-      const res = await fetch("/api/progress", {
+      const res = await fetch(phase6ApiUrl("/api/progress"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(progress)

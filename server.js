@@ -5,7 +5,7 @@ const feedbackRoutes = require("./routes/feedbackRoutes");
 const notesRoutes = require("./routes/notesRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 
-const port = Number(process.env.FEEDBACK_PORT || process.env.PORT || 5001);
+const port = Number(process.env.PORT || process.env.FEEDBACK_PORT || 5001);
 const app = createApp({
   homePage: "index.html",
   routeMounts: [
